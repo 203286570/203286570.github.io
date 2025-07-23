@@ -2,58 +2,60 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>透明背景演示</title>
+    
+    <!-- 
+      下面这个 meta 标签对于在移动端 WebView 中展示非常重要。
+      它能确保页面宽度正确，并禁止用户缩放，以获得更像原生App的体验。
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
+    <title>透明H5页面</title>
+    
     <style>
-        /* 
-         * 给最顶层的 <html> 元素设置一个背景图案。
-         * 这里用CSS渐变模拟了一个灰色棋盘格，这是图形软件中表示透明的常用方式。
-         */
-        html {
-            background-color: #e0e0e0;
-            background-image: 
-                linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
-                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #f0f0f0 75%),
-                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-        }
-
-        /* 
-         *  这才是关键！将 <body> 的背景设置为 transparent。
-         *  这样，<html> 的背景图案就能“透”过 <body> 显示出来。
-         */
-        body {
+        /* --- 核心代码：实现透明背景 --- */
+        html, body {
+            /* 关键！将背景色设置为透明 */
             background-color: transparent;
-            font-family: sans-serif;
-            color: #333;
+            
+            /* 清除默认边距，确保内容能紧贴嵌入的容器边缘 */
             margin: 0;
+            padding: 0;
+            
+            /* 可选：如果你希望内容垂直和水平都铺满 */
+            /* width: 100%; */
+            /* height: 100%; */
+        }
+        
+        /* 
+         * ======================================
+         * == 在这里放入你自己的 CSS 样式代码 ==
+         * ======================================
+         */
+
+        /* 示例样式 (可以删除) */
+        .my-content {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333; /* 初始文字颜色，确保在浅色背景下可见 */
+            text-align: center;
             padding: 20px;
         }
 
-        /* 
-         * 为了更好地展示，我们在页面中间放一个有自己背景色的内容区块。
-         */
-        .content {
-            background-color: white;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 40px auto;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
 
-    <div class="content">
-        <h1>这是一个透明背景的演示</h1>
-        <p>你看到的灰色棋盘格背景实际上是 <code>&lt;html&gt;</code> 元素的背景。</p>
-        <p>而这个白色方框和它里面的所有内容，都位于 <code>&lt;body&gt;</code> 标签内。因为 <code>&lt;body&gt;</code> 的背景被设置为了 <strong>transparent (透明)</strong>，所以你能透过它看到后面的棋盘格。</p>
-        <p>这证明了 <code>&lt;body&gt;</code> 的背景确实是透明的。</p>
-    </div>
+    <!-- 
+      ==================================================
+      == 在这里放入你的页面结构 (你的 HTML 内容) ==
+      ==================================================
+    -->
 
+    <!-- 示例结构 (可以删除) -->
+    <div class="my-content">
+        <h1>您的内容</h1>
+        <p>这个页面的背景是完全透明的。</p>
+        <p>您可以替换掉这里的所有内容。</p>
+    </div>
+    
 </body>
 </html>
